@@ -39,11 +39,11 @@ async def joinbox(ctx):
         wins_list[string_member] = 0
         presentDate = datetime.datetime.now()
         cooldowns_list[string_member] = datetime.datetime.timestamp(presentDate)*1000
-        with open("Bot/boxing.json", "w") as outfile:
+        with open("data/boxing.json", "w") as outfile:
             json.dump(boxing_list, outfile)
-        with open("Bot/wins.json", "w") as outfile2:
+        with open("data/wins.json", "w") as outfile2:
             json.dump(wins_list, outfile2)
-        with open("Bot/cooldowns.json", "w") as outfile3:
+        with open("data/cooldowns.json", "w") as outfile3:
             json.dump(cooldowns_list, outfile3)
         embed = discord.Embed(title="You have joined the tournament, good luck!", color=discord.Colour.dark_green())
         await ctx.reply(embed=embed)
@@ -75,11 +75,11 @@ async def box(ctx, member:discord.Member = None):
         if boxing_list[string_author] == 0:
             presentDate = datetime.datetime.now()
             cooldowns_list[string_author] = ((datetime.datetime.timestamp(presentDate)*1000) + 86400000)
-            with open("Bot/cooldowns.json", "w") as outfile3:
+            with open("data/cooldowns.json", "w") as outfile3:
                 json.dump(cooldowns_list, outfile3)
-        with open("Bot/boxing.json", "w") as outfile:
+        with open("data/boxing.json", "w") as outfile:
             json.dump(boxing_list, outfile)
-        with open("Bot/wins.json", "w") as outfile2:
+        with open("data/wins.json", "w") as outfile2:
             json.dump(wins_list, outfile2)
         if winner <= 45:
             embed = discord.Embed(title=f"{string_author} won!", color=discord.Colour.brand_green())
